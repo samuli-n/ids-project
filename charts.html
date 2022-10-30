@@ -3,15 +3,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1; charset=UTF-8" />
     <title>Top Crops</title>
     
-        <script>
-            L_NO_TOUCH = true;
-            L_DISABLE_3D = false;
-        </script>
+    <script>
+        L_NO_TOUCH = true;
+        L_DISABLE_3D = false;
+    </script>
     
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"
+        integrity="sha512-ElRFoEQdI5Ht6kZvyzXhYG9NqjtkmlkfYk0wr6wHxU9JEHakS7UJZNeml5ALk+8IKlU6jDgMabC3vkumRokgJA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    ></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
@@ -21,51 +27,208 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 
     
     <meta name="viewport" content="width=device-width,
         initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+
+    <style>
+        .chartBox {
+            width: 800px;
+        }
+        .selectBox {
+            color: #000000;
+            width: 100%;
+            height: 60px;
+            justify-content:center;
+            margin: auto;
+            font-size: 20px;
+        }
+        select {
+            color: #FFFFFF;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 20%;
+            text-align: center;
+            height: 60px;
+            border: 2px solid;
+            border-radius: 5px;
+            background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right #31363f;
+            -webkit-appearance: none;
+            background-position-x: 244px;
+            
+        }
+    </style>
             
 </head>
-<body>    
-            <section>
-                <h1>Charts</h1>
-                <h4>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cum iste voluptatibus porro deleniti dignissimos quaerat reprehenderit, debitis aspernatur eius id eos pariatur. Adipisci dignissimos recusandae magnam nemo quam aspernatur.
-                    
-                </h4>
-                <div class="wave">
-                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-                    </svg>
-                </div>
+<body>
+    <section>
+        <h1>Top Crops</h1>
+        <div class="wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
 
-            </section>
+    </section>
 
-            <section>
-                <nav>
-                    <ul>
-                      <li><a href="index.html">Home</a></li>
-                      <li><a href="charts.html">Charts</a></li>
-                    </ul>
-                  </nav>
-            </section>
+    <section>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a class="active" href="charts.html">Charts</a></li>
+            </ul>
+            </nav>
+    </section>
 
-            <section>
-                <div class="folium-map" id="map" ></div> 
-            </section>
+    <section>
+        <h2>Cereal Yields</h2>
 
-            <section>
-                <h1>Hello, World!</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cum iste voluptatibus porro deleniti dignissimos quaerat reprehenderit, debitis aspernatur eius id eos pariatur. Adipisci dignissimos recusandae magnam nemo quam aspernatur.
-                </p>
-            </section>
+        <div class="selectBox">
+            <select id="regions">
+                <option value="1990,3460,3810,3370,3640,3330,3750,3590,3910,3780,4050,3230,3770,3880,3840,4000,4160,3690,4020,2820,4090,3460,2810,4032X
+                               1800,2580,2450,2470,2460,2160,2400,2270,2790,2740,2720,2890,3360,3370,2010,3750,4500,3710,4610,2530,4470,3560,3270,3078X
+                               2420,3720,3510,3290,3510,3270,3720,3320,3820,3880,3810,2870,3460,3640,3920,3620,3960,3750,4240,3200,4160,3550,2400,3633X
+                               2140,3800,3490,3640,3300,3280,3460,3170,3840,3880,3720,2940,3630,3950,3950,3780,3880,3780,4270,2980,3980,3980,2300,3276">Häme</option>
+                <option value="1,3460,2,3370,3640,3330,3750,3590,3910,3780,4050,3230,3770,3880,3840,4000,4160,3690,4020,2820,4090,3460,2810,4032X
+                               1800,2580,2450,2470,2460,2160,2400,2270,2790,2740,2720,2890,3360,3370,2010,3750,4500,3710,4610,2530,4470,3560,3270,3078X
+                               2420,3720,3510,3290,3510,3270,3720,3320,3820,3880,3810,2870,3460,3640,3920,3620,3960,3750,4240,3200,4160,3550,2400,3633X
+                2140,3800,3490,3640,3300,3280,3460,3170,3840,3880,3720,2940,3630,3950,3950,3780,3880,3780,4270,2980,3980,3980,2300,3276">Ostrobothnia</option>
+                <option value="1990,3460,3810,3370,3640,3330,3750,3590,3910,3780,4050,3230,3770,3880,3840,4000,4160,3690,4020,2820,4090,3460,2810,4032X
+                1800,2580,2450,2470,2460,2160,2400,2270,2790,2740,2720,2890,3360,3370,2010,3750,4500,3710,4610,2530,4470,3560,3270,3078X
+                2420,3720,3510,3290,3510,3270,3720,3320,3820,3880,3810,2870,3460,3640,3920,3620,3960,3750,4240,3200,4160,3550,2400,3633X
+                2140,3800,3490,3640,3300,3280,3460,3170,3840,3880,3720,2940,3630,3950,3950,3780,3880,3780,4270,2980,3980,3980,2300,3276">Pirkanmaa</option>
+                <option value="1990,3460,3810,3370,3640,3330,3750,3590,3910,3780,4050,3230,3770,3880,3840,4000,4160,3690,4020,2820,4090,3460,2810,4032X
+                1800,2580,2450,2470,2460,2160,2400,2270,2790,2740,2720,2890,3360,3370,2010,3750,4500,3710,4610,2530,4470,3560,3270,3078X
+                2420,3720,3510,3290,3510,3270,3720,3320,3820,3880,3810,2870,3460,3640,3920,3620,3960,3750,4240,3200,4160,3550,2400,3633X
+                2140,3800,3490,3640,3300,3280,3460,3170,3840,3880,3720,2940,3630,3950,3950,3780,3880,3780,4270,2980,3980,3980,2300,3276">Satakunta</option>
+                <option value="1990,3460,3810,3370,3640,3330,3750,3590,3910,3780,4050,3230,3770,3880,3840,4000,4160,3690,4020,2820,4090,3460,2810,4032X
+                1800,2580,2450,2470,2460,2160,2400,2270,2790,2740,2720,2890,3360,3370,2010,3750,4500,3710,4610,2530,4470,3560,3270,3078X
+                2420,3720,3510,3290,3510,3270,3720,3320,3820,3880,3810,2870,3460,3640,3920,3620,3960,3750,4240,3200,4160,3550,2400,3633X
+                2140,3800,3490,3640,3300,3280,3460,3170,3840,3880,3720,2940,3630,3950,3950,3780,3880,3780,4270,2980,3980,3980,2300,3276">South Ostrobothnia</option>
+                <option value="1990,3460,3810,3370,3640,3330,3750,3590,3910,3780,4050,3230,3770,3880,3840,4000,4160,3690,4020,2820,4090,3460,2810,4032X
+                1800,2580,2450,2470,2460,2160,2400,2270,2790,2740,2720,2890,3360,3370,2010,3750,4500,3710,4610,2530,4470,3560,3270,3078X
+                2420,3720,3510,3290,3510,3270,3720,3320,3820,3880,3810,2870,3460,3640,3920,3620,3960,3750,4240,3200,4160,3550,2400,3633X
+                2140,3800,3490,3640,3300,3280,3460,3170,3840,3880,3720,2940,3630,3950,3950,3780,3880,3780,4270,2980,3980,3980,2300,3276">South Savo</option>
+                <option value="1990,3460,3810,3370,3640,3330,3750,3590,3910,3780,4050,3230,3770,3880,3840,4000,4160,3690,4020,2820,4090,3460,2810,4032X
+                1800,2580,2450,2470,2460,2160,2400,2270,2790,2740,2720,2890,3360,3370,2010,3750,4500,3710,4610,2530,4470,3560,3270,3078X
+                2420,3720,3510,3290,3510,3270,3720,3320,3820,3880,3810,2870,3460,3640,3920,3620,3960,3750,4240,3200,4160,3550,2400,3633X
+                2140,3800,3490,3640,3300,3280,3460,3170,3840,3880,3720,2940,3630,3950,3950,3780,3880,3780,4270,2980,3980,3980,2300,3276">Southwest Finland</option>
+                <option value="1990,3460,3810,3370,3640,3330,3750,3590,3910,3780,4050,3230,3770,3880,3840,4000,4160,3690,4020,2820,4090,3460,2810,4032X
+                1800,2580,2450,2470,2460,2160,2400,2270,2790,2740,2720,2890,3360,3370,2010,3750,4500,3710,4610,2530,4470,3560,3270,3078X
+                2420,3720,3510,3290,3510,3270,3720,3320,3820,3880,3810,2870,3460,3640,3920,3620,3960,1,4240,3200,4160,3550,2400,3633X
+                2140,3800,6,3640,3300,3280,3460,3170,3840,3880,3720,2940,3630,3950,3950,3780,3880,3780,4270,2980,3980,3980,2300,3276">Uusimaa</option>
+            </select>
+        </div>
+    </section>
+    <section>
+        <div class="chartBox">
+            <canvas id="myChart"></canvas>
+        </div>
+    </section>
+
+    <script>
+        const labels = [
+                            '1999',
+                            '2000',
+                            '2001',
+                            '2002',
+                            '2003',
+                            '2004',
+                            '2005',
+                            '2006',
+                            '2007',
+                            '2008',
+                            '2009',
+                            '2010',
+                            '2011',
+                            '2012',
+                            '2013',
+                            '2014',
+                            '2015',
+                            '2016',
+                            '2017',
+                            '2018',
+                            '2019',
+                            '2020',
+                            '2021',
+                            '2022'
+                        ];
+
+        const myChart = new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Wheat",
+                    data: [1990,3460,3810,3370,3640,3330,3750,3590,3910,3780,4050,3230,3770,3880,3840,4000,4160,3690,4020,2820,4090,3460,2810,4032],
+                    borderColor: 'rgba(255, 99, 132, 0.8)',
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 3,
+                    pointHoverRadius: 10,
+                    pointBackgroundColor: 'rgba(255, 99, 132, 0.5)'
+                },{
+                    label: "Rye",
+                    data: [1800,2580,2450,2470,2460,2160,2400,2270,2790,2740,2720,2890,3360,3370,2010,3750,4500,3710,4610,2530,4470,3560,3270,3078],
+                    borderColor: 'rgba(255, 206, 86, 0.8)',
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 3,
+                    pointHoverRadius: 10,
+                    pointBackgroundColor: 'rgba(255, 206, 86, 0.5)'
+                },{
+                    label: "Barley",
+                    data: [2420,3720,3510,3290,3510,3270,3720,3320,3820,3880,3810,2870,3460,3640,3920,3620,3960,3750,4240,3200,4160,3550,2400,3633],
+                    borderColor: 'rgba(153, 102, 255, 0.8)',
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 3,
+                    pointHoverRadius: 10,
+                    pointBackgroundColor: 'rgba(153, 102, 255, 0.5)'
+                }, {
+                    label: "Oat",
+                    data: [2140,3800,3490,3640,3300,3280,3460,3170,3840,3880,3720,2940,3630,3950,3950,3780,3880,3780,4270,2980,3980,3980,2300,3276],
+                    borderColor: 'rgba(75, 192, 192, 0.8)',
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 3,
+                    pointHoverRadius: 10,
+                    pointBackgroundColor: 'rgba(75, 192, 192, 0.5)'
+                }]
+            },
+            options: {
+                color: "white",
+                legend: {display: false},
+
+                scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {color: "white"}
+                },
+                x: {
+                    ticks: {color: "white"}
+                }
+            }
+            }
+        });
+
+
+        const region = document.getElementById('regions');
+        region.addEventListener('change', cropYields);
+        function cropYields(){
+            for (let i = 0; i < 4; i++) {
+                myChart.data.datasets[i].data = region.value.split('X')[i].split(',');
+                myChart.options.plugins.text = "baa";
+                myChart.update();
+            }
+
+        }
+
+
+
+    </script>
         
 </body>
-<script>    
-
-
-                     
-</script>
