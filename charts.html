@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1; charset=UTF-8" />
+    <title>Top Crops</title>
+    
+        <script>
+            L_NO_TOUCH = true;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&display=swap">
+    <link rel="stylesheet" href="styles.css">
+
+    
+    <meta name="viewport" content="width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            background: #31363f;
+        }
+        section:first-of-type {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 400px;
+            padding-top: 30px;
+            padding-bottom: 0;
+            padding-left: 20vw;
+            padding-right: 20vw;
+            background: url('./gradient1.svg');
+            background-position: center;
+            background-size: 100%;
+            overflow: hidden;
+        }
+        section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 200px;
+            padding: 100px 20vw;
+        }
+        #map {
+            margin: auto;
+            width: 100%;
+            min-height: 500px;
+        }
+
+        .spacer {
+            aspect-ratio: 1080/320;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .layer1 {
+            background-image: url('./layer1.svg');
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .wave svg {
+            position: relative;
+            display: block;
+            width: calc(300% + 1.3px);
+            height: 300px;
+        }
+
+        .wave .shape-fill {
+            fill: #31363f;
+        }
+
+        .info {
+            padding: 6px 8px;
+            font: 14px 'Segoe UI';
+            background: white;
+            color: black;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25 px 0;
+            font-size: 0.9em;
+            font-family: 'Segoe UI';
+            box-shadow: 0 0 20px rgba(0,0,0,0.15);
+        }
+        .styled-table thead {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+        .styled-table th, .styled-table td {
+            padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+            border-bottom: thin solid #dddddd;
+        }
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        .legend {
+            line-height: 18px;
+            color: #555;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+    </style>
+            
+</head>
+<body>    
+            <section>
+                <h1>Charts</h1>
+                <h4>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cum iste voluptatibus porro deleniti dignissimos quaerat reprehenderit, debitis aspernatur eius id eos pariatur. Adipisci dignissimos recusandae magnam nemo quam aspernatur.
+                    
+                </h4>
+                <div class="wave">
+                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                    </svg>
+                </div>
+
+            </section>
+
+            <section>
+                <nav>
+                    <ul>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="charts.html">Charts</a></li>
+                    </ul>
+                  </nav>
+            </section>
+
+            <section>
+                <div class="folium-map" id="map" ></div> 
+            </section>
+
+            <section>
+                <h1>Hello, World!</h1>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus cum iste voluptatibus porro deleniti dignissimos quaerat reprehenderit, debitis aspernatur eius id eos pariatur. Adipisci dignissimos recusandae magnam nemo quam aspernatur.
+                </p>
+            </section>
+        
+</body>
+<script>    
+
+
+                     
+</script>

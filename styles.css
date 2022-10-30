@@ -1,0 +1,143 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    color: #31363f;
+    text-align: center;
+    padding: 24px 26px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #111;
+}
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    background: #31363f;
+}
+section:first-of-type {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 400px;
+    padding-top: 30px;
+    padding-bottom: 0;
+    padding-left: 20vw;
+    padding-right: 20vw;
+    background: url('./gradient1.svg');
+    background-position: center;
+    background-size: 100%;
+    overflow: hidden;
+}
+section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 200px;
+    padding: 25px 20vw;
+}
+#map {
+    margin: auto;
+    width: 100%;
+    min-height: 500px;
+}
+
+.spacer {
+    aspect-ratio: 1080/320;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.layer1 {
+    background-image: url('./layer1.svg');
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.wave svg {
+    position: relative;
+    display: block;
+    width: calc(300% + 1.3px);
+    height: 300px;
+}
+
+.wave .shape-fill {
+    fill: #31363f;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px 'Segoe UI';
+    background: white;
+    color: black;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+.styled-table {
+    border-collapse: collapse;
+    margin: 25 px 0;
+    font-size: 0.9em;
+    font-family: 'Segoe UI';
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+.styled-table thead {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: thin solid #dddddd;
+}
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.legend {
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 18px;
+    height: 18px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
