@@ -11,8 +11,8 @@ ul {
     overflow: hidden;
     background-color: #ffffff;
     border-radius: 20px;
-    border: 5px solid;
-    box-shadow: 0 0 10px 0px #777 inset, 0 0 0px 0px #777;
+    border: solid;
+    box-shadow: 0 0 10px 0px #888 inset;
     
 }
 
@@ -21,7 +21,7 @@ li {
 }
 
 li a {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
     display: block;
@@ -50,12 +50,12 @@ li a:active {
 li .active {
     color: #ffffff;
     background-color: #0069fa;
-    box-shadow: 0 0 10px 0px #000000 inset, 0 0 0px 0px #777;
+    box-shadow: 0 0 10px 0px #000000 inset;
 }
 
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', Arial, sans-serif;
     color: white;
     background: #31363f;
 }
@@ -65,7 +65,7 @@ section:first-of-type {
     flex-direction: column;
     align-items: center;
     min-height: 200px;
-    padding-top: 30px;
+    padding-top: 5vh;
     padding-bottom: 0;
     padding-left: 20vw;
     padding-right: 20vw;
@@ -82,11 +82,12 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-    padding: 50px 20vw;
+    padding-top: 8vh;
+    padding-left: 20vw;
+    padding-right: 20vw;
 }
 section:last-of-type {
-    padding-bottom: 100px;
+    padding-bottom: 10vh;
 }
 #map {
     margin: auto;
@@ -130,7 +131,7 @@ section:last-of-type {
 
 .info {
     padding: 6px 8px;
-    font: 14px 'Segoe UI';
+    font: 14px Arial;
     background: white;
     color: black;
     background: rgba(255,255,255,0.8);
@@ -145,7 +146,7 @@ section:last-of-type {
     border-collapse: collapse;
     margin: 25 px 0;
     font-size: 0.9em;
-    font-family: 'Segoe UI';
+    font-family: Arial;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
 }
 .styled-table thead {
